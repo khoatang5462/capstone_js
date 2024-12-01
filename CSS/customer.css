@@ -1,0 +1,113 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#header {
+  box-shadow: rgba(100, 100, 111, 0.3) 10px 7px 29px 10px;
+  position: sticky;
+  top: 20px;
+}
+
+header {
+  max-width: 75%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+header .navbar-icon {
+  display: none;
+}
+header .header-logo {
+  flex-basis: 33.33%;
+  text-align: start;
+  font-size: 35px;
+  font-weight: 600;
+}
+header .header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .header-nav .nav-list.open {
+  max-height: 500px; /* Giá trị đủ lớn để hiển thị toàn bộ menu */
+  opacity: 1; /* Hiển thị hoàn toàn */
+}
+header .header-nav .nav-list {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 30px;
+  font-size: 16px;
+  color: gray;
+  font-weight: 500;
+}
+header .header-nav .nav-list li {
+  padding: 4px 0;
+  position: relative;
+}
+header .header-nav .nav-list li::after {
+  position: absolute;
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  content: "";
+  transition: all ease-in-out 0.3s;
+}
+header .header-nav .nav-list li:hover {
+  color: rgb(31, 41, 55);
+}
+header .header-nav .nav-list li:hover::after {
+  width: 100%;
+}
+header .header-nav .shopping-icon {
+  flex-basis: 16.7%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  #header {
+    height: 100vh;
+  }
+  header .navbar-icon {
+    display: inline-block;
+  }
+  header .header-logo {
+    font-size: 40px;
+    font-weight: 700;
+  }
+  header .header-nav {
+    position: relative;
+  }
+  header .header-nav .nav-list {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    padding: 1rem 0;
+  }
+  header .header-nav .nav-list li {
+    padding: 4px 0;
+    margin: 25px;
+    font-size: 20px;
+  }
+  header .header-nav .nav-list li::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  header .header-nav .header-social {
+    display: flex;
+    justify-content: end;
+    gap: 50px;
+    flex-basis: 33.33%;
+    text-align: center;
+    font-size: 30px;
+  }
+}/*# sourceMappingURL=customer.css.map */

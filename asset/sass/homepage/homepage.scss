@@ -1,0 +1,53 @@
+ #homePage {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background: linear-gradient(106.5deg, rgba(255, 215, 185, 0.91) 23%, rgba(223, 159, 247, 0.8) 93%);
+        height: 100vh;
+        margin: 0;
+
+        a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 50px 50px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.5s;
+
+            span {
+                padding-bottom: 20px;
+                font-size: 1.2rem;
+            }
+
+            i {
+                font-size: 100px;
+                padding: 20px;
+            }
+
+            &:hover {
+                box-shadow: rgba(100, 100, 111, 0.3) 10px 7px 29px 10px;
+                padding: 40px;
+                border-radius: 5px;
+                border-radius: 10%;
+            }
+        }
+    }
+
+
+// Responsive styles
+@media only screen and (min-width: 768px) {
+#homePage{
+
+    display: flex;
+    justify-content: space-between;      
+    gap: 100px;
+   
+}
+}
+// 
+
+
