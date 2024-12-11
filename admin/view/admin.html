@@ -1,23 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Tailwind cdn  -->
-     <script src="https://cdn.tailwindcss.com"></script>
-     <!-- favicon -->
-     <link
-     rel="icon"
-     href="../../asset/img/administrator.png"
-     sizes="16x16"
-   />
-     <!-- fontawesome 6.7.1 -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <!-- main css -->
-      <link rel="stylesheet" href="../CSS/main.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind cdn  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- favicon -->
+    <link rel="icon" href="../../asset/img/administrator.png" sizes="16x16" />
+    <!-- fontawesome 6.7.1 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- main css -->
+    <link rel="stylesheet" href="../../CSS/admin.css" />
     <title>Admin page</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <!-- Nền mờ -->
+    <div id="overlay"></div>
+
+    <section id="adminHeader" class="header">
+      <header class="py-5">
+        <nav class="nav-header">
+          <div class="logo">
+            <a href="#">logo</a>
+            <h2 class="cursor-pointer text-indigo-600 font-medium">
+              User
+              <span
+                class="bg-gradient-to-r from-indigo-600 to-indigo-500 bg-clip-text text-transparent"
+                >Managerment</span
+              >
+            </h2>
+          </div>
+
+          <!-- <div class="px-4 py-1 border border-indigo-600 rounded-md relative">
+          <input type="text" placeholder="Find products" class="outline-none">
+          <div class="w-8 h-6 text-center border rounded-lg bg-slate-300 absolute right-[2px] bottom-[2px]">
+            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+          </div>
+        </div> -->
+        </nav>
+      </header>
+    </section>
+
+    <!-- Table -->
+    <section id="table">
+      <div class="p-5 mt-7 h-fit bg-gray-100 relative">
+        <h2
+          class="text-xl mb-2 absolute top-[-33px] left-40 font-semibold bg-gray-100 border border-b-0 px-4 pt-2 rounded-lg"
+        >
+          List Products
+        </h2>
+        <button
+          class="btn-add"
+          id="addProducts"
+          data-toggle="modal"
+          data-target="#formPhone"
+        >
+          Add products <span class="text-lg font-semibold">+</span>
+        </button>
+        <div id="table" class="table-container">
+          <table class="responsive-table">
+            <thead>
+              <tr>
+                <th>Nu.</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Type</th>
+                <th>Desc</th>
+                <th><i class="fa-solid fa-gear"></i></th>
+              </tr>
+            </thead>
+            <tbody id="tblProductsList"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form -->
+    <section id="form" class="">
+      <form id="formPhone" class="modal">
+        <div class="form-name border-b-2">
+          <h2 id="header-title">Products Management</h2>
+          <i
+            class="fa-solid fa-x cursor-pointer absolute right-3 text-sm hover:text-lg close"
+            id="btnClose"
+            data-dismiss="modal"
+          ></i>
+        </div>
+
+        <!-- Form fields -->
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" />
+          <span class="sp-thongBao" id="tbName"></span>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="text" id="price" />
+          <span class="sp-thongBao" id="tbPrice"></span>
+        </div>
+        <div class="form-group">
+          <label for="screen">Screen</label>
+          <input type="text" id="screen" />
+          <span class="sp-thongBao" id="tbScreen"></span>
+        </div>
+        <div class="form-group">
+          <label for="backCamera">Back Camera</label>
+          <input type="text" id="backCamera" />
+          <span class="sp-thongBao" id="tbBackCamera"></span>
+        </div>
+        <div class="form-group">
+          <label for="type">Type</label>
+          <select id="type">
+            <option value="" disabled selected hidden>Choose</option>
+            <option value="iphone">IPhone</option>
+            <option value="samsung">Samsung</option>
+          </select>
+          <span class="sp-thongBao" id="tbType"></span>
+        </div>
+        <div class="form-group">
+          <label for="frontCamera">Front Camera</label>
+          <input type="text" id="frontCamera" />
+          <span class="sp-thongBao" id="tbFrontCamera"></span>
+        </div>
+        <div class="form-group">
+          <label for="img">IMG</label>
+          <input type="text" id="img" />
+          <span class="sp-thongBao" id="tbImg"></span>
+        </div>
+        <div class="form-group">
+          <label for="desc">Description</label>
+          <textarea id="desc"></textarea>
+          <span class="sp-thongBao" id="tbDesc"></span>
+        </div>
+
+        <div class="btn-submit">
+          <button id="btnAdd" class="btn-add">Add</button>
+          <button id="btnUdate" class="btn-update" style="display: none">
+            Update
+          </button>
+          <!-- <button id="btnDelete" class="btn-delete">Delete</button> -->
+        </div>
+      </form>
+    </section>
+
+    <!-- axios -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+      integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module" src="../controller/main_admin.js"></script>
+    <script type="module" src="../controller/main_admin.js"></script>
+  </body>
 </html>
