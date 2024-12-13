@@ -90,19 +90,6 @@ body button:hover {
 .header .nav-header .logo a {
   font-size: 13px;
 }
-.header .nav-header div:nth-child(2) {
-  font-size: 14px;
-}
-.header .nav-header div:nth-child(2):hover {
-  box-shadow: 0px 1px 2px #514ae6;
-}
-.header .nav-header div:nth-child(2) div {
-  cursor: pointer;
-  transition: all 0.5s;
-}
-.header .nav-header div:nth-child(2) div:hover {
-  transform: translateX(-2px);
-}
 
 #table {
   position: relative;

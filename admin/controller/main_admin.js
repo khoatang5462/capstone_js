@@ -17,7 +17,7 @@ document.addEventListener("click", function (e) {
     if (e.target.getAttribute("data-toggle") === "modal") {
         const targetSelector = e.target.getAttribute("data-target");
         const targetModal = document.querySelector(targetSelector);
-        
+
         if (targetModal && overlay) {
             targetModal.classList.add("active");
             overlay.classList.add("active");
@@ -86,7 +86,10 @@ const renderTable = (arr) => {
                 <button class="py-2 px-5 bg-red-500" onclick="deteProduct('${item.id}')">Delete</button>
             </td>
         </tr>`;
+
+
     });
+
     document.getElementById('tblProductsList').innerHTML = htmlContent;
 }
 
@@ -138,35 +141,35 @@ document.getElementById('formPhone').onsubmit = async (ev) => {
         const product = getFormInfo()
         console.log("product: ", product);
         const action = formElement.getAttribute('data-action')
-        
+
         let isValid = true
 
-      isValid &=  validation.required(product.name, "Vui lòng điền tên sản phẩm", "tbName")
-      isValid &=  validation.required(product.price, "Vui lòng điền giá sản phẩm", "tbPrice")
-      isValid &=  validation.required(product.screen, "Vui lòng điền screen", "tbScreen")
-      isValid &=  validation.required(product.backCamera, "Vui lòng điền back camera", "tbBackCamera")
-      isValid &=  validation.required(product.type, "Vui lòng chọn loại", "tbType")
-      isValid &=  validation.required(product.frontCamera, "Vui lòng điền front camera", "tbFrontCamera")
-      isValid &=  validation.required(product.img, "Vui lòng điền link sản phẩm", "tbImg")
-      isValid &=  validation.required(product.desc, "Vui lòng điền mô tả", "tbDesc")
-        
-      if(!isValid) return
+        isValid &= validation.required(product.name, "Vui lòng điền tên sản phẩm", "tbName")
+        isValid &= validation.required(product.price, "Vui lòng điền giá sản phẩm", "tbPrice")
+        isValid &= validation.required(product.screen, "Vui lòng điền screen", "tbScreen")
+        isValid &= validation.required(product.backCamera, "Vui lòng điền back camera", "tbBackCamera")
+        isValid &= validation.required(product.type, "Vui lòng chọn loại", "tbType")
+        isValid &= validation.required(product.frontCamera, "Vui lòng điền front camera", "tbFrontCamera")
+        isValid &= validation.required(product.img, "Vui lòng điền link sản phẩm", "tbImg")
+        isValid &= validation.required(product.desc, "Vui lòng điền mô tả", "tbDesc")
+
+        if (!isValid) return
 
 
         formElement.reset()
         if (action !== 'edit') {
             //   Goi API them moi sp
             const result = await qlspServices.addProduct(product)
-            
+
         }
-        
+
         if (action === 'edit') {
             const productId = formElement.getAttribute('data-id')
             await qlspServices.editProduct(productId, product)
             document.getElementById('btnClose').click()
 
         }
-        
+
         getProducts()
     } catch (err) {
 
@@ -193,8 +196,8 @@ window.editProduct = async (productId) => {
         elements.forEach((element) => {
             const { id } = element
             element.value = result.data[id]
-        })    
-        
+        })
+
     } catch (err) {
 
     }
@@ -209,11 +212,36 @@ window.deteProduct = async (productId) => {
     try {
         await qlspServices.deleteProduct(productId)
 
-        
+
         getProducts()
 
     } catch (err) {
         console.log("err: ", err);
 
     }
+}
+
+
+// ================
+document.getElementById('filterType').onchange = async (e) => {
+    const selectedType = e.target.value
+    try {
+        const result = await qlspServices.getProductList(selectedType)
+
+        let filteredProducts;
+
+        if (selectedType) {
+            filteredProducts = result.data.filter((product) => product.type === selectedType);
+        } else {
+            filteredProducts = result.data;
+        }
+        renderTable(filteredProducts)
+
+    } catch (err) {
+        console.log("err: ", err);
+
+
+    }
+
+
 }

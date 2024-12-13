@@ -105,22 +105,22 @@ body {
       }
     }
 
-    div:nth-child(2) {
-      font-size: 14px;
+    // div:nth-child(2) {
+    //   font-size: 14px;
 
-      &:hover {
-        box-shadow: $box-shadow;
-      }
+    //   &:hover {
+    //     box-shadow: $box-shadow;
+    //   }
 
-      div {
-        cursor: pointer;
-        transition: all 0.5s;
+    //   div {
+    //     cursor: pointer;
+    //     transition: all 0.5s;
 
-        &:hover {
-          transform: translateX(-2px);
-        }
-      }
-    }
+    //     &:hover {
+    //       transform: translateX(-2px);
+    //     }
+    //   }
+    // }
   }
 }
 
