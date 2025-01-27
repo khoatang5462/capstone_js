@@ -142,7 +142,7 @@ document.getElementById('formPhone').onsubmit = async (ev) => {
         console.log("product: ", product);
         const action = formElement.getAttribute('data-action')
 
-        let isValid = true
+        let isValid = false
 
         isValid &= validation.required(product.name, "Vui lòng điền tên sản phẩm", "tbName")
         isValid &= validation.required(product.price, "Vui lòng điền giá sản phẩm", "tbPrice")
@@ -153,7 +153,7 @@ document.getElementById('formPhone').onsubmit = async (ev) => {
         isValid &= validation.required(product.img, "Vui lòng điền link sản phẩm", "tbImg")
         isValid &= validation.required(product.desc, "Vui lòng điền mô tả", "tbDesc")
 
-        if (!isValid) return
+        if (isValid) return
 
 
         formElement.reset()
